@@ -9,6 +9,11 @@ class User {
     this.updatedAt = null;
   }
 
+  get messages() {
+    const { messages } = require('seed');
+    return messages.filter(message => message.authorId === this.id);
+  }
+
   save() {
     if (!this.createdAt) {
       this.createdAt = new Date();

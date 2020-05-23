@@ -20,7 +20,7 @@ const seed = () => {
   return { users, messages };
 };
 
-module.exports = seed;
+module.exports = seed();
 
 
 

@@ -1,16 +1,14 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('schema');
-// const seed = require('seed');
-
-// const data = seed();
-
+const rootValue = require('resolver');
 
 
 const app = express();
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
+  rootValue,
   graphiql: true,
 }));
 
