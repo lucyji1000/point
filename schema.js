@@ -19,6 +19,20 @@ const schema = buildSchema(`
     user(id: Int!): User
     users: [User]
   }
+  input MessageInput {
+    content: String!
+    authorId: Int!
+  }
+  input UserInput {
+    username: String!
+    email: String!
+    password: String!
+    phone: String
+  }
+  type Mutation {
+    createUser(input: UserInput!): User
+    createMessage(input: MessageInput!): Message
+  }
 `);
 
 module.exports = schema;
