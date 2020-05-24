@@ -10,7 +10,7 @@ const schema = buildSchema(`
   }
   type User {
     id: Int
-    username: String
+    email: String
     messages: [Message]
   }
   type Query {
@@ -19,19 +19,26 @@ const schema = buildSchema(`
     user(id: Int!): User
     users: [User]
   }
+  input LoginInput {
+    email: String!
+    password: String!
+  }
   input MessageInput {
     content: String!
-    authorId: Int!
   }
-  input UserInput {
-    username: String!
+  input SignupInput {
     email: String!
     password: String!
     phone: String
   }
+  type AuthToken {
+    token: String
+  }
   type Mutation {
-    createUser(input: UserInput!): User
     createMessage(input: MessageInput!): Message
+    login(input: LoginInput!): AuthToken
+    logout: String
+    signUp(input: SignupInput!): AuthToken
   }
 `);
 

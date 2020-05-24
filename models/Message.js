@@ -1,4 +1,3 @@
-
 class Message {
   constructor({ id, authorId, content }) {
     this.id = id;

@@ -7,13 +7,16 @@
     "dev": "NODE_PATH=`pwd` nodemon index.js",
     "start": "NODE_PATH=`pwd` node index.js",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "test": "yarn lint"
   },
   "dependencies": {
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "faker": "^4.1.0",
     "graphql": "^15.0.0",
+    "graphql-passport": "^0.6.3",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "passport": "^0.4.1",
     "rosie": "^2.0.1"

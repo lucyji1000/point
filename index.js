@@ -1,15 +1,24 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
+const passport = require('passport');
+const { buildContext } = require('graphql-passport');
 const schema = require('schema');
 const rootValue = require('resolver');
+require('./passport');
 
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue,
-  graphiql: true,
-}));
+app.use(passport.initialize());
 
-app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
+app.use('/api', 
+  graphqlHTTP((req, res) => ({
+    schema: schema,
+    rootValue,
+    graphiql: true,
+    context: buildContext({ req, res })
+  }))
+);
+
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));

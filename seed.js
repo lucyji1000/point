@@ -1,11 +1,15 @@
 const _ = require('lodash');
 const { Message, User } = require('factories');
+const { TEST_USER } = require('config');
 
 const NUM_USERS = 10;
 const MIN_MESSAGES_PER_USER = 0;
 const MAX_MESSAGES_PER_USER = 10;
 
-const generateUsers = (numUsers) => _.times(numUsers, () => User.build().save());
+const generateUsers = (numUsers) => _.times(numUsers, (index) => {
+  const props = index === 0 ? TEST_USER : {};
+  return User.build(props).save();
+});
 
 const generateMessagesForUser = ({ user, min = MIN_MESSAGES_PER_USER, max = MAX_MESSAGES_PER_USER }) => {
   const numMessages = Math.floor(Math.random() * max) + min;

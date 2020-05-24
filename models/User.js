@@ -1,10 +1,8 @@
 class User {
-  constructor({ id, username, email, phone, password }) {
+  constructor({ id, email, password }) {
     this.id = id;
-    this.username = username;
     this.email = email;
-    this.phone = phone;
-    this.password = password;
+    this.password = password; // normally would be hashed
     this.createdAt = null;
     this.updatedAt = null;
   }

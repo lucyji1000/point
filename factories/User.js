@@ -7,6 +7,4 @@ module.exports = Factory.define('user', User)
   .attrs({
     email: faker.internet.email,
     password: faker.internet.password,
-    phone: faker.phone.phoneNumber,
-    username: faker.internet.userName,
   });
